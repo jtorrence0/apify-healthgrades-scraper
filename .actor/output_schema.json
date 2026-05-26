@@ -1,0 +1,13 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Healthgrades Doctor Listings",
+    "description": "Dataset containing scraped doctor profiles from Healthgrades.com with ratings, specialties, and office locations",
+    "properties": {
+        "dataset": {
+            "type": "string",
+            "title": "Results",
+            "description": "Dataset containing all scraped doctor listings",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        }
+    }
+}

@@ -1,143 +1,190 @@
 {
-  "actorSpecification": 1,
-  "fields": {
-    "title": "Healthgrades Doctor Listing",
-    "type": "object",
-    "schemaVersion": 1,
-    "description": "A doctor listing scraped from Healthgrades.com, including profile details and office locations.",
-    "properties": {
-      "name": {
-        "type": "string",
-        "title": "Doctor Name",
-        "description": "Full name of the doctor (e.g., Dr. Jane Smith, MD)",
-        "nullable": true
-      },
-      "profileUrl": {
-        "type": "string",
-        "title": "Profile URL",
-        "description": "Full URL to the doctor's Healthgrades profile page",
-        "nullable": true
-      },
-      "doctorSpecialty": {
-        "type": "string",
-        "title": "Specialty",
-        "description": "The doctor's primary medical specialty"
-      },
-      "rating": {
-        "type": "string",
-        "title": "Rating",
-        "description": "Star rating score as displayed on Healthgrades"
-      },
-      "reviewCount": {
-        "type": "string",
-        "title": "Review Count",
-        "description": "Number of patient reviews"
-      },
-      "address": {
-        "type": "string",
-        "title": "Address",
-        "description": "Practice address from search results. Multiple addresses separated by ' / '.",
-        "nullable": true
-      },
-      "attributes": {
-        "type": "array",
-        "title": "Attributes",
-        "description": "Provider strength attributes (e.g., 'Highly Recommended', 'Great Bedside Manner')",
-        "items": {
-          "type": "string"
-        }
-      },
-      "imageUrl": {
-        "type": "string",
-        "title": "Image URL",
-        "description": "URL of the doctor's profile photo",
-        "nullable": true
-      },
-      "locations": {
-        "type": "array",
-        "title": "Office Locations",
-        "description": "Detailed office locations extracted from the doctor's profile page",
-        "items": {
-          "type": "object",
-          "properties": {
-            "practiceName": {
-              "type": "string",
-              "title": "Practice Name",
-              "description": "Name of the medical practice",
-              "nullable": true
-            },
-            "streetAddress": {
-              "type": "string",
-              "title": "Street Address",
-              "description": "Street address of the office",
-              "nullable": true
-            },
-            "city": {
-              "type": "string",
-              "title": "City",
-              "description": "City of the office",
-              "nullable": true
-            },
-            "state": {
-              "type": "string",
-              "title": "State",
-              "description": "State abbreviation",
-              "nullable": true
-            },
-            "postalCode": {
-              "type": "string",
-              "title": "Postal Code",
-              "description": "ZIP or postal code",
-              "nullable": true
-            },
-            "phone": {
-              "type": "string",
-              "title": "Phone",
-              "description": "Office phone number",
-              "nullable": true
-            }
-          }
-        }
-      }
-    }
-  },
-  "views": {
-    "overview": {
-      "title": "Doctor Listings Overview",
-      "transformation": {
-        "fields": [
-          "name",
-          "doctorSpecialty",
-          "address",
-          "rating",
-          "reviewCount"
-        ]
-      },
-      "display": {
-        "component": "table",
+    "actorSpecification": 1,
+    "fields": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
         "properties": {
-          "name": {
-            "label": "Doctor Name",
-            "format": "text"
-          },
-          "doctorSpecialty": {
-            "label": "Specialty",
-            "format": "text"
-          },
-          "address": {
-            "label": "Address",
-            "format": "text"
-          },
-          "rating": {
-            "label": "Rating",
-            "format": "text"
-          },
-          "reviewCount": {
-            "label": "Review Count",
-            "format": "text"
-          }
+            "name": {
+                "type": "string",
+                "title": "Doctor Name",
+                "description": "Full name of the doctor including credentials",
+                "nullable": true,
+                "example": "Dr. Jane Smith, MD"
+            },
+            "profileUrl": {
+                "type": "string",
+                "title": "Profile URL",
+                "description": "Full URL to the doctor's Healthgrades profile page",
+                "nullable": true,
+                "example": "https://www.healthgrades.com/physician/dr-jane-smith-abc12"
+            },
+            "doctorSpecialty": {
+                "type": "string",
+                "title": "Specialty",
+                "description": "Primary medical specialty of the doctor",
+                "nullable": true,
+                "example": "Cardiology"
+            },
+            "rating": {
+                "type": "string",
+                "title": "Rating",
+                "description": "Star rating score as displayed on Healthgrades",
+                "nullable": true,
+                "example": "4.7"
+            },
+            "reviewCount": {
+                "type": "string",
+                "title": "Review Count",
+                "description": "Number of patient ratings in parenthesized format",
+                "nullable": true,
+                "example": "(131 ratings)"
+            },
+            "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Practice address from search results, multiple addresses separated by ' / '",
+                "nullable": true,
+                "example": "501 N Graham St Ste 200 Office, Portland, OR 97227"
+            },
+            "attributes": {
+                "type": "array",
+                "title": "Attributes",
+                "description": "Provider strength attributes highlighted on the listing",
+                "items": {
+                    "type": "string"
+                },
+                "nullable": true,
+                "example": ["Listened/answered questions", "Explains conditions well"]
+            },
+            "imageUrl": {
+                "type": "string",
+                "title": "Image URL",
+                "description": "URL of the doctor's profile photo",
+                "nullable": true,
+                "example": "https://dims.healthgrades.com/dims3/MMH/format/webp/?url=https://photos.healthgrades.com/img/prov/example.jpg"
+            },
+            "locations": {
+                "type": "array",
+                "title": "Office Locations",
+                "description": "Detailed office locations extracted from the doctor's profile page",
+                "nullable": true,
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "practiceName": {
+                            "type": "string",
+                            "title": "Practice Name",
+                            "description": "Name of the medical practice or facility",
+                            "nullable": true,
+                            "example": "Example Medical Center"
+                        },
+                        "streetAddress": {
+                            "type": "string",
+                            "title": "Street Address",
+                            "description": "Street address of the office",
+                            "nullable": true,
+                            "example": "501 N Graham St Ste 200"
+                        },
+                        "city": {
+                            "type": "string",
+                            "title": "City",
+                            "description": "City of the office location",
+                            "nullable": true,
+                            "example": "Portland"
+                        },
+                        "state": {
+                            "type": "string",
+                            "title": "State",
+                            "description": "State abbreviation",
+                            "nullable": true,
+                            "example": "OR"
+                        },
+                        "postalCode": {
+                            "type": "string",
+                            "title": "Postal Code",
+                            "description": "ZIP or postal code",
+                            "nullable": true,
+                            "example": "97227"
+                        },
+                        "phone": {
+                            "type": "string",
+                            "title": "Phone",
+                            "description": "Office phone number",
+                            "nullable": true,
+                            "example": "(503)413-7162"
+                        }
+                    },
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "example": [
+                    {
+                        "practiceName": "Example Medical Center",
+                        "streetAddress": "501 N Graham St Ste 200",
+                        "city": "Portland",
+                        "state": "OR",
+                        "postalCode": "97227",
+                        "phone": "(503)413-7162"
+                    }
+                ]
+            }
+        },
+        "required": [],
+        "additionalProperties": true
+    },
+    "views": {
+        "overview": {
+            "title": "Overview",
+            "description": "Most important fields at a glance",
+            "transformation": {
+                "fields": [
+                    "name",
+                    "doctorSpecialty",
+                    "rating",
+                    "reviewCount",
+                    "address",
+                    "profileUrl",
+                    "imageUrl",
+                    "attributes"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "name": {
+                        "label": "Doctor Name",
+                        "format": "text"
+                    },
+                    "doctorSpecialty": {
+                        "label": "Specialty",
+                        "format": "text"
+                    },
+                    "rating": {
+                        "label": "Rating",
+                        "format": "text"
+                    },
+                    "reviewCount": {
+                        "label": "Reviews",
+                        "format": "text"
+                    },
+                    "address": {
+                        "label": "Address",
+                        "format": "text"
+                    },
+                    "profileUrl": {
+                        "label": "Profile",
+                        "format": "link"
+                    },
+                    "imageUrl": {
+                        "label": "Photo",
+                        "format": "image"
+                    },
+                    "attributes": {
+                        "label": "Attributes",
+                        "format": "array"
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }
