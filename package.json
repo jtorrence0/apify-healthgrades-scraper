@@ -1,0 +1,22 @@
+{
+  "name": "healthgrades-scraper-cheerio",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "An Apify actor that scrapes Healthgrades using CheerioCrawler for fast, lightweight extraction.",
+  "dependencies": {
+    "apify": "^3.4.0",
+    "crawlee": "^3.13.2"
+  },
+  "devDependencies": {
+    "@apify/eslint-config": "^0.4.0",
+    "eslint": "^8.50.0"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "lint": "eslint ./src --ext .js,.jsx",
+    "lint:fix": "eslint ./src --ext .js,.jsx --fix",
+    "test": "echo \"No tests yet, but you should write some!\" && exit 1"
+  },
+  "author": "Justin Torrence",
+  "license": "ISC"
+}

@@ -1,0 +1,143 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "title": "Healthgrades Doctor Listing",
+    "type": "object",
+    "schemaVersion": 1,
+    "description": "A doctor listing scraped from Healthgrades.com, including profile details and office locations.",
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "Doctor Name",
+        "description": "Full name of the doctor (e.g., Dr. Jane Smith, MD)",
+        "nullable": true
+      },
+      "profileUrl": {
+        "type": "string",
+        "title": "Profile URL",
+        "description": "Full URL to the doctor's Healthgrades profile page",
+        "nullable": true
+      },
+      "doctorSpecialty": {
+        "type": "string",
+        "title": "Specialty",
+        "description": "The doctor's primary medical specialty"
+      },
+      "rating": {
+        "type": "string",
+        "title": "Rating",
+        "description": "Star rating score as displayed on Healthgrades"
+      },
+      "reviewCount": {
+        "type": "string",
+        "title": "Review Count",
+        "description": "Number of patient reviews"
+      },
+      "address": {
+        "type": "string",
+        "title": "Address",
+        "description": "Practice address from search results. Multiple addresses separated by ' / '.",
+        "nullable": true
+      },
+      "attributes": {
+        "type": "array",
+        "title": "Attributes",
+        "description": "Provider strength attributes (e.g., 'Highly Recommended', 'Great Bedside Manner')",
+        "items": {
+          "type": "string"
+        }
+      },
+      "imageUrl": {
+        "type": "string",
+        "title": "Image URL",
+        "description": "URL of the doctor's profile photo",
+        "nullable": true
+      },
+      "locations": {
+        "type": "array",
+        "title": "Office Locations",
+        "description": "Detailed office locations extracted from the doctor's profile page",
+        "items": {
+          "type": "object",
+          "properties": {
+            "practiceName": {
+              "type": "string",
+              "title": "Practice Name",
+              "description": "Name of the medical practice",
+              "nullable": true
+            },
+            "streetAddress": {
+              "type": "string",
+              "title": "Street Address",
+              "description": "Street address of the office",
+              "nullable": true
+            },
+            "city": {
+              "type": "string",
+              "title": "City",
+              "description": "City of the office",
+              "nullable": true
+            },
+            "state": {
+              "type": "string",
+              "title": "State",
+              "description": "State abbreviation",
+              "nullable": true
+            },
+            "postalCode": {
+              "type": "string",
+              "title": "Postal Code",
+              "description": "ZIP or postal code",
+              "nullable": true
+            },
+            "phone": {
+              "type": "string",
+              "title": "Phone",
+              "description": "Office phone number",
+              "nullable": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Doctor Listings Overview",
+      "transformation": {
+        "fields": [
+          "name",
+          "doctorSpecialty",
+          "address",
+          "rating",
+          "reviewCount"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "name": {
+            "label": "Doctor Name",
+            "format": "text"
+          },
+          "doctorSpecialty": {
+            "label": "Specialty",
+            "format": "text"
+          },
+          "address": {
+            "label": "Address",
+            "format": "text"
+          },
+          "rating": {
+            "label": "Rating",
+            "format": "text"
+          },
+          "reviewCount": {
+            "label": "Review Count",
+            "format": "text"
+          }
+        }
+      }
+    }
+  }
+}

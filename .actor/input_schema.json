@@ -1,0 +1,40 @@
+{
+  "title": "Healthgrades Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Search and scrape doctors from Healthgrades",
+  "properties": {
+    "specialty": {
+      "type": "string",
+      "title": "Specialty",
+      "description": "Doctor specialty to search for (e.g., Cardiologist)",
+      "editor": "textfield",
+      "prefill": "Cardiologist"
+    },
+    "location": {
+      "type": "string",
+      "title": "Location",
+      "description": "Location to search in (e.g., Portland, OR)",
+      "editor": "textfield",
+      "prefill": "Portland, OR"
+    },
+    "maxPages": {
+      "type": "integer",
+      "title": "Max Pages",
+      "description": "Maximum number of pages to scrape. Set to 0 for unlimited.",
+      "default": 1,
+      "prefill": 1,
+      "minimum": 0
+    },
+    "proxyConfiguration": {
+      "type": "object",
+      "title": "Proxy settings",
+      "description": "Configure proxy for requests",
+      "editor": "proxy",
+      "default": {
+        "useApifyProxy": true
+      }
+    }
+  },
+  "required": ["specialty", "location"]
+}

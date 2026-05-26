@@ -1,0 +1,12 @@
+{
+  "actorSpecification": 1,
+  "name": "healthgrades-scraper",
+  "title": "Healthgrades Scraper",
+  "description": "Extract detailed doctor listings from Healthgrades.com using CheerioCrawler. Fast and lightweight scraping with specialty/location filters, pagination, and proxy support. Ideal for healthcare lead generation and data enrichment.",
+  "version": "0.0",
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

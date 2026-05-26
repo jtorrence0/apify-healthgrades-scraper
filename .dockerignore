@@ -1,0 +1,31 @@
+# IDEs / configs
+.idea
+.zed
+.vscode
+.editorconfig
+.eslintrc
+
+# Crawlee and Apify local storage
+apify_storage
+crawlee_storage
+storage
+
+# Dependencies (rebuilt in container)
+node_modules
+
+# Git / CI
+.git
+.github
+.gitignore
+
+# Claude Code / agent configs
+.claude
+.agents
+
+# Docs (not needed in container)
+README.md
+CLAUDE.md
+
+# Environment
+.env
+.env.*

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "apify-actor-development": {
+      "source": "apify/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/apify-actor-development/SKILL.md",
+      "computedHash": "7ad31fb95bee04f5916ae1bdba24e22648190dd3e42fc7ad1c003589240d8ac7"
+    },
+    "apify-generate-output-schema": {
+      "source": "apify/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/apify-generate-output-schema/SKILL.md",
+      "computedHash": "8f765e6d05d827b20c9b242145c39174255176f72081b4dbfadc42c3cc735b32"
+    }
+  }
+}
